@@ -1,0 +1,348 @@
+/* ==========================================================
+  contact.css - annotated for learning
+  - This file styles the contact page and a few shared components
+  - Explanations are provided as comments; no CSS values were changed
+  - Keep sections in the same order as the HTML: global, navbar,
+    /* ==========================================================
+      contact.css - annotated for learning
+      - This file styles the contact page and a few shared components
+      - Explanations are provided as comments; no CSS values were changed
+      - Keep sections in the same order as the HTML: global, navbar,
+        dropdowns, page layout, components, responsive rules, FAQ.
+    ========================================================== */
+
+    /* ---------- Global / page background ----------
+       These base rules set the font and the background image for the
+       contact page. They affect the whole document. */
+    body {
+        font-family: Arial, sans-serif; /* simple, readable sans-serif */
+        margin: 0;                      /* remove default page margin */
+        padding: 0;                     /* remove default page padding */
+        /* background image provides a decorative full-page backdrop */
+        background-image: url('pictures/contactbg.jpeg');
+        background-size: cover;         /* cover fills the viewport without distortion */
+        background-position: center;    /* center the image */
+        background-repeat: no-repeat;   /* don't tile the image */
+        background-attachment: fixed;   /* fixed gives a parallax-like effect */
+        min-height: 100vh;              /* ensure page is at least full viewport height */
+        width: 100%;
+    }
+
+    /* ---------- Navbar (top navigation) ----------
+       The navbar is a horizontal flex container with three parts:
+       - logo (left), nav links (middle/right), and a hamburger icon (mobile)
+       Flexbox keeps items vertically centered and spaced. */
+    .navbar {
+        display: flex;
+        justify-content: space-between; /* space logo and links across the bar */
+        align-items: center;            /* vertically center the content */
+        background-color: #f4f4f4;     /* light background behind the nav */
+        padding: 10px 20px;            /* breathing room around nav items */
+    }
+
+    .navbar .logo {
+        font-size: 1.5em;              /* slightly larger for emphasis */
+        color: #c9bebe;                /* decorative color for the brand */
+        text-decoration: none;         /* remove underline if the logo is a link */
+    }
+
+    .nav-links {
+        display: flex;                 /* arrange menu items horizontally */
+        list-style: none;              /* remove default bullets */
+        gap: 40px;                     /* space between each nav item */
+        padding-right: 80px;           /* extra spacing on the right side */
+    }
+
+    .nav-links a {
+        color: #131313;                /* dark link color for readability */
+        text-decoration: none;         /* links are plain text-style in the nav */
+    }
+
+    .bars {
+        display: none;                 /* hidden on desktop; shown on small screens */
+        font-size: 1.5em;              /* size of the hamburger icon */
+        cursor: pointer;               /* pointer indicates interactivity */
+        color: rgb(24, 25, 25);
+    }
+
+    .dropdown {
+        position: relative;            /* establishing block for absolutely positioned menu */
+    }
+
+    .dropdown-content {
+        /* hidden by default; shown on hover (desktop) or with the `.active` class (mobile) */
+        display: none;
+        position: absolute;            /* position relative to the .dropdown parent */
+        background-color: #f7f4f4;
+        min-width: 200px;              /* keep a usable minimum width for menu items */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;                    /* place above other content */
+        border-radius: 4px;            /* slightly rounded corners */
+        padding: 10px 0;               /* vertical padding for inner links */
+        top: 100%;                     /* directly below the triggering element */
+        left: 0;
+    }
+
+    .dropdown-content a {
+        color: #333;                   /* link color inside the dropdown */
+        padding: 8px 16px;             /* clickable area for each entry */
+        text-decoration: none;         /* no underline inside the menu */
+        display: block;                /* make full-width clickable rows */
+        transition: background-color 0.3s; /* smooth hover transition */
+    }
+
+    .dropdown-content a:hover {
+        background-color: #e9e9e9;     /* subtle highlight on hover */
+    }
+
+    /* Submenu (nested dropdown) for items like "Masterbatches" inside the main dropdown */
+    .dropdown-submenu {
+        position: relative;            /* nested submenu uses absolute positioning */
+    }
+
+    .dropdown-submenu > .dropdown-section {
+        /* this is the fly-out panel for submenus (e.g., Masterbatches -> White/Black) */
+        display: none;
+        position: absolute;
+        left: 100%;                    /* place to the right of the parent menu */
+        top: 0;
+        background-color:  #f7f4f4;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;                    /* above the parent dropdown */
+        border-radius: 4px;
+        padding: 10px 0;
+    }
+
+    .dropdown-submenu > .dropdown-section a {
+        color: #333;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;                /* consistent link layout with parent dropdown */
+    }
+
+    /* On large screens (desktop) we show the submenu on hover */
+    @media (min-width: 901px) {
+        .dropdown-submenu:hover > .dropdown-section {
+            display: block;
+        }
+    }
+
+    /* Show submenu when active (for mobile) */
+    .dropdown-submenu.active > .dropdown-section {
+        /* the `.active` class is toggled by JS on small screens to open submenus */
+        display: block;
+    }
+
+    /* Show dropdown on hover for desktop */
+    /* Desktop: show the primary dropdown on hover */
+    @media (min-width: 901px) {
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    }
+
+    /* Show dropdown when active (for mobile) */
+    .dropdown.active .dropdown-content {
+        /* `.active` is used by the mobile script to reveal dropdown menus */
+        display: block;
+    }
+
+    /* ---------- Responsive: mobile navigation ----------
+        On small screens we collapse the horizontal nav into a stacked panel.
+        The `.bars` element (hamburger) becomes visible and a script toggles
+        `.nav-links.active` to show/hide the panel. */
+    @media (max-width: 900px) {
+        .nav-links {
+            display: none;               /* hide the horizontal links on small screens */
+            flex-direction: column;      /* stack items vertically when shown */
+            background-color: #8e8d8d;   /* panel background color */
+            position: absolute;          /* positioned below the navbar */
+            top: 60px;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .nav-links.active {
+            display: flex;               /* shown when hamburger toggles the class */
+        }
+
+        .bars {
+            display: block;              /* make the hamburger icon visible on mobile */
+            color: #131313;
+        }
+    }
+
+    .content{  
+        /* This is an auxiliary utility class used in the layout. It positions
+           content absolutely and provides top spacing. Keep values as-is. */
+        position: absolute;
+        padding-top: 86px;
+        width: 100px;
+        height: 80%;
+        color: white;
+    }
+
+    /* Contact page styles */
+    /* ---------- Contact page layout ----------
+        The `.contact-page` wrapper centers content and constrains the width to
+        a comfortable reading line length. */
+    .contact-page{
+        max-width: 1100px;            /* content width cap for readability */
+        margin: 40px auto;            /* center horizontally with vertical spacing */
+        padding: 20px;
+        color: #131212;               /* default text color inside the page */
+    }
+
+    .contact-hero{
+        text-align: left;             /* headings aligned to left for this layout */
+        margin-bottom: 24px;          /* space below the hero area */
+        color: #fff;                  /* hero text sits on top of the page background */
+    }
+
+    .contact-hero h1{
+        margin: 0 0 8px 0;           /* heading spacing: top 0, bottom 8px */
+        font-size: 32px;             /* clear, prominent page title */
+    }
+
+    .contact-grid{
+        display: grid;                /* 3-column grid for office / phone / email cards */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;                    /* gap between columns */
+        margin-bottom: 28px;
+    }
+
+    .contact-card{
+        /* small white cards that sit on top of the page background */
+        background: rgba(255,255,255,0.95);
+        padding: 18px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .contact-main{
+        /* main content area: form (2fr) + quick links / info (1fr) */
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+    }
+
+    .contact-form-card, .contact-info-card{
+        /* consistent card styling for the form and the quick-links box */
+        background: rgba(255,255,255,0.95);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .contact-form label{
+        display: block;               /* each label takes its own line */
+        margin-top: 12px;             /* vertical spacing before form controls */
+        font-weight: 600;             /* emphasize the label text */
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea{
+        width: 100%;                  /* full width so fields align with card */
+        padding: 10px 12px;           /* comfortable click/touch area */
+        margin-top: 6px;
+        border: 1px solid #ddd;       /* subtle border */
+        border-radius: 6px;           /* rounded corners to match card style */
+        font-size: 14px;
+    }
+
+    .btn-primary{
+        cursor: pointer;
+    }
+
+
+
+    .contact-info-card ul{
+        /* Quick links list: remove default bullets and spacing so we can render
+           each link as a distinct card-like item. */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .contact-info-card li{
+        margin: 10px 0;                /* spacing between cards */
+    }
+    .contact-info-card a{
+        display: block;                /* make the whole area clickable */
+        padding: 10px 12px;
+        background: #f6f8f7;           /* subtle card background to separate from the page */
+        border-radius: 8px;
+        color: #166a3a;                /* brand/darker green for link text */
+        text-decoration: none;         /* remove underline */
+        font-weight: 600;
+        border: 1px solid rgba(22,106,58,0.06);
+        transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+    }
+    .contact-info-card a::before{
+        /* decorative chevron placed before the link text */
+        content: "›";
+        display: inline-block;
+        margin-right: 10px;
+        color: #2b8a3e;
+        font-weight: 700;
+    }
+    .contact-info-card a:hover{
+        background: #ffffff;           /* lift visual on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+        text-decoration: none;
+    }
+
+
+    .social-icons a{
+        display: inline-block;
+        margin-right: 10px;
+        color: #333;
+        font-size: 18px;               /* icon size for social links */
+    }
+
+    .site-footer{
+        margin-top: 30px;
+        text-align: center;
+        padding: 18px 0;
+        color: #fff;                   /* white text on the dark footer */
+        background: #111;              /* dark footer background */
+    }
+
+    @media (max-width: 900px){
+        .contact-grid{grid-template-columns: 1fr}
+        .contact-main{grid-template-columns: 1fr}
+        .contact-page{padding:12px}
+    }
+
+    /* FAQ (details/summary) styling - no JavaScript required */
+    .faq-section{
+        max-width: 1100px;
+        margin: 28px auto;
+        padding: 18px;
+        color: #111; /* default black text for the FAQ area */
+    }
+    .faq-section h2{
+        margin: 0 0 12px 0;
+        color: #111;
+    }
+    details{
+        background: #ffffff; /* white box */
+        border: 1px solid rgba(0,0,0,0.08);
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+    }
+    summary{
+        cursor: pointer;
+        list-style: none;
+        font-weight: 600;
+        outline: none;
+        color: #111; /* black summary text */
+    }
+
+    @media (max-width: 900px){
+        .faq-section{padding:12px}
+    }

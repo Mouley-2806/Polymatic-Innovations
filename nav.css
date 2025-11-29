@@ -1,0 +1,141 @@
+ .navbar {
+        display: flex;
+        justify-content: space-between; /* space logo and links across the bar */
+        align-items: center;            /* vertically center the content */
+        background-color: #f4f4f4;     /* light background behind the nav */
+        padding: 10px 20px;            /* breathing room around nav items */
+    }
+
+    .navbar .logo {
+        font-size: 1.5em;              /* slightly larger for emphasis */
+        color: #c9bebe;                /* decorative color for the brand */
+        text-decoration: none;         /* remove underline if the logo is a link */
+    }
+
+    .nav-links {
+        display: flex;                 /* arrange menu items horizontally */
+        list-style: none;              /* remove default bullets */
+        gap: 40px;                     /* space between each nav item */
+        padding-right: 80px;           /* extra spacing on the right side */
+    }
+
+    .nav-links a {
+        color: #131313;                /* dark link color for readability */
+        text-decoration: none;         /* links are plain text-style in the nav */
+    }
+
+    .bars {
+        display: none;                 /* hidden on desktop; shown on small screens */
+        font-size: 1.5em;              /* size of the hamburger icon */
+        cursor: pointer;               /* pointer indicates interactivity */
+        color: rgb(24, 25, 25);
+    }
+
+    .dropdown {
+        position: relative;            /* establishing block for absolutely positioned menu */
+    }
+
+    .dropdown-content {
+        /* hidden by default; shown on hover (desktop) or with the `.active` class (mobile) */
+        display: none;
+        position: absolute;            /* position relative to the .dropdown parent */
+        background-color: #f7f4f4;
+        min-width: 200px;              /* keep a usable minimum width for menu items */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;                    /* place above other content */
+        border-radius: 4px;            /* slightly rounded corners */
+        padding: 10px 0;               /* vertical padding for inner links */
+        top: 100%;                     /* directly below the triggering element */
+        left: 0;
+    }
+
+    .dropdown-content a {
+        color: #333;                   /* link color inside the dropdown */
+        padding: 8px 16px;             /* clickable area for each entry */
+        text-decoration: none;         /* no underline inside the menu */
+        display: block;                /* make full-width clickable rows */
+        transition: background-color 0.3s; /* smooth hover transition */
+    }
+
+    .dropdown-content a:hover {
+        background-color: #e9e9e9;     /* subtle highlight on hover */
+    }
+
+    /* Submenu (nested dropdown) for items like "Masterbatches" inside the main dropdown */
+    .dropdown-submenu {
+        position: relative;            /* nested submenu uses absolute positioning */
+    }
+
+    .dropdown-submenu > .dropdown-section {
+        /* this is the fly-out panel for submenus (e.g., Masterbatches -> White/Black) */
+        display: none;
+        position: absolute;
+        left: 100%;                    /* place to the right of the parent menu */
+        top: 0;
+        background-color:  #f7f4f4;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 2;                    /* above the parent dropdown */
+        border-radius: 4px;
+        padding: 10px 0;
+    }
+
+    .dropdown-submenu > .dropdown-section a {
+        color: #333;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;                /* consistent link layout with parent dropdown */
+    }
+
+    /* On large screens (desktop) we show the submenu on hover */
+    @media (min-width: 901px) {
+        .dropdown-submenu:hover > .dropdown-section {
+            display: block;
+        }
+    }
+
+    /* Show submenu when active (for mobile) */
+    .dropdown-submenu.active > .dropdown-section {
+        /* the `.active` class is toggled by JS on small screens to open submenus */
+        display: block;
+    }
+
+    /* Show dropdown on hover for desktop */
+    /* Desktop: show the primary dropdown on hover */
+    @media (min-width: 901px) {
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    }
+
+    /* Show dropdown when active (for mobile) */
+    .dropdown.active .dropdown-content {
+        /* `.active` is used by the mobile script to reveal dropdown menus */
+        display: block;
+    }
+
+    /* ---------- Responsive: mobile navigation ----------
+        On small screens we collapse the horizontal nav into a stacked panel.
+        The `.bars` element (hamburger) becomes visible and a script toggles
+        `.nav-links.active` to show/hide the panel. */
+    @media (max-width: 900px) {
+        .nav-links {
+            display: none;               /* hide the horizontal links on small screens */
+            flex-direction: column;      /* stack items vertically when shown */
+            background-color: #8e8d8d;   /* panel background color */
+            position: absolute;          /* positioned below the navbar */
+            top: 60px;
+            left: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .nav-links.active {
+            display: flex;               /* shown when hamburger toggles the class */
+        }
+
+        .bars {
+            display: block;              /* make the hamburger icon visible on mobile */
+            color: #131313;
+        }
+    }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About Us | Polymatic Innovations</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Site styles (reuse existing product/home styles) -->
+    <link rel="stylesheet" href="white.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <!-- About page specific styles -->
+    <link rel="stylesheet" href="aboutus.css">
+
+    <script src="home.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="home.html" class="logo">
+            <img src="pictures/combined logo_180by60.png" alt="Polymatic Innovations Logo">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+
+            <li class="dropdown">
+                <a href="products.html"><i class="fa fa-box" aria-hidden="true"></i> Products <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <div class="dropdown-submenu">
+                        <a href="masterbatch.html"><i class="fas fa-cubes"></i> Masterbatches <i class="fas fa-chevron-right"></i></a>
+                        <div class="dropdown-section">
+                            <a href="white.html"><i class="fas fa-square" style="color:rgb(228, 228, 228);"></i> White</a>
+                            <a href="black.html"><i class="fas fa-square" style="color:#000;"></i> Black</a>
+                            <a href="color.html"><i class="fas fa-square" style="color:rgb(154, 135, 156);"></i> Colour</a>
+                        </div>
+                    </div>
+                    <a href="filler.html"><i class="fas fa-fill-drip"></i> Filler</a>
+                    <a href="pigment.html"><i class="fas fa-palette"></i> Pigment</a>
+                    <a href="additive.html"><i class="fas fa-flask"></i> Additive</a>
+                </div>
+            </li>
+
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+
+        <div class="bars" id="bars">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main class="about-page">
+        <header class="about-hero product-hero" style="align-items:center; padding:48px 4%;">
+            <div class="hero-content" style="max-width:760px;">
+                <h1 class="product-title">About Us | Polymatic Innovations</h1>
+                <p class="product-sub">Bringing science, technology and creativity together to deliver advanced masterbatch and color solutions.</p>
+
+                <div style="margin-top:18px; display:flex; gap:12px; align-items:center;">
+                    <a href="products.html" class="cta-btn" style="text-decoration:none;">Explore Our Products</a>
+                    <a href="contact.html" class="cta-secondary" style="margin-left:8px;">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="hero-image" style="max-width:420px; margin-left:32px;">
+                <img src="pictures/about us.jpeg" alt="Polymatic Innovations" style="width:100%; height:280px; object-fit:cover; display:block; border-radius:8px; box-shadow:0 12px 30px rgba(0,0,0,0.15);"/>
+                <!-- confetti canvas (draws confetti over the hero image) -->
+                <canvas id="about-confetti" class="confetti-canvas" aria-hidden="true"></canvas>
+            </div>
+        </header>
+
+        <section class="container" style="padding:36px 4%; max-width:1100px; margin:0 auto;">
+            <article style="margin-bottom:28px;">
+                <h2>1. Who We Are</h2>
+                <p>At Polymatic Innovations, we bring together science, technology, and creativity to deliver advanced masterbatch and synthetic color solutions to industries across India and beyond. As trusted suppliers, we take pride in sourcing and providing high-quality masterbatch and colorants that enhance the performance, consistency, and appeal of every product they touch.</p>
+                <p>Driven by innovation and precision, we are redefining how industries experience color — not just as a visual element, but as a catalyst for quality and transformation.</p>
+            </article>
+
+            <hr />
+
+            <article style="margin:28px 0;">
+                <h2>2. What We Do</h2>
+                <p>We specialize in supplying a comprehensive range of:</p>
+                <ul class="product-bullets" style="margin-top:12px;">
+                    <li><i class="fas fa-check-circle"></i> <strong>Masterbatches</strong> – High-performance color and additive concentrates for diverse polymer applications.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Synthetic Colors &amp; Pigments</strong> – Reliable, vivid, and durable color solutions for plastics, packaging, and industrial use.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Customized Color Solutions</strong> – Tailored formulations and precise color matching to meet specific client needs.</li>
+                </ul>
+                <p style="margin-top:12px;">Every product we supply reflects our commitment to quality, consistency, and innovation.</p>
+            </article>
+
+            <hr />
+
+            <article style="margin:28px 0;">
+                <h2>4. Our Vision &amp; Mission</h2>
+                <h3>Vision</h3>
+                <p>To be a leading name in color innovation — known for quality, reliability, and sustainable solutions that empower industries worldwide.</p>
+                <h3>Mission</h3>
+                <p>To connect technology with creativity by delivering premium color and additive solutions that help our clients design better, produce smarter, and stand out in their markets.</p>
+            </article>
+
+            <hr />
+
+            <article style="margin:28px 0;">
+                <h2>5. Why Choose Us</h2>
+                <ul class="product-bullets" style="margin-top:12px;">
+                    <li><i class="fas fa-check-circle"></i> Extensive product range and sourcing network.</li>
+                    <li><i class="fas fa-check-circle"></i> Consistent quality assurance and technical expertise.</li>
+                    <li><i class="fas fa-check-circle"></i> Flexible solutions tailored to client requirements.</li>
+                    <li><i class="fas fa-check-circle"></i> Commitment to long-term partnerships and timely delivery.</li>
+                </ul>
+                <p style="margin-top:12px;">With every shipment, we deliver more than colors — we deliver trust, precision, and performance.</p>
+            </article>
+
+            <hr />
+
+            <article style="margin:28px 0 40px;">
+                <h2>6. Let’s Innovate Together</h2>
+                <p>At Polymatic Innovations, every shade tells a story of science and creativity combined. Let’s collaborate to add more depth, durability, and distinction to your products.</p>
+                <div style="margin-top:18px; display:flex; gap:12px;">
+                    <a href="products.html" class="cta-btn">Explore Our Products</a>
+                    <a href="contact.html" class="cta-secondary">Get in Touch</a>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <img src="pictures/combined logo_180by60.png" alt="Polymatic Innovations Logo" class="footer-logo">
+                <p>Innovation meets excellence in manufacturing and digital solutions.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i>+919717296924</p>
+                <p><i class="fas fa-envelope"></i> Polymatic.in@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Polymatic Innovations. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="home.js" defer></script>
+    
+</body>
+</html>
