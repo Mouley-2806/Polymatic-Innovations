@@ -194,6 +194,10 @@
         padding: 20px;
         color: #131212;               /* default text color inside the page */
     }
+    .contact-card p a{
+        text-decoration: none;
+
+    }
 
     .contact-hero{
         text-align: left;             /* headings aligned to left for this layout */
